@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from app.database.connection import test_database_connection
 
 app = FastAPI(
     title="AI Personal Finance Assistant",
@@ -19,3 +20,17 @@ def health_check():
     return {
         "status": "healthy"
     }
+
+@app.get("/health/database")
+def database_health_check():
+    try:
+        test_database_connection()
+        return {
+            "status": "connected",
+            "database": "PostgreSQL"
+        }
+    except Exception:
+        return {
+            "status": "disconnected",
+            "database": "PostgreSQL"
+        }
