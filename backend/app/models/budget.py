@@ -1,5 +1,5 @@
 from datetime import date, datetime, timezone
-from typing import Decimal
+from decimal import Decimal
 
 from sqlalchemy import (
     Date,
