@@ -3,6 +3,8 @@ import os
 from dotenv import load_dotenv
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker
+from app.database.base import Base 
+import app.models
 
 load_dotenv()
 
@@ -36,3 +38,6 @@ def test_database_connection():
     with engine.connect() as connection:
         connection.execute(text("SELECT 1"))
         return True
+
+def create_tables():
+    Base.metadata.create_all(bind=engine)
