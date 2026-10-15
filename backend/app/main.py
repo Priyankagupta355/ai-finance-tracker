@@ -7,6 +7,7 @@ from app.routes.budget import router as budget_router
 from app.routes.savings_goal import router as savings_goal_router
 from app.routes.dashboard import router as dashboard_router
 from app.routes.analytics import router as analytics_router
+from app.routes.insights import router as insights_router
 
 app = FastAPI(
     title="AI Personal Finance Assistant",
@@ -21,6 +22,7 @@ app.include_router(budget_router)
 app.include_router(savings_goal_router)
 app.include_router(dashboard_router)
 app.include_router(analytics_router)
+app.include_router(insights_router)
 
 @app.get("/")
 def root():
